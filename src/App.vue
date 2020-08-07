@@ -31,14 +31,12 @@ export default {
 .content-body {
     height: 80vh;
     min-height: 400px;
-}
-.footer {
-    margin-bottom: 1rem;
+    padding-top: 50px;
 }
 .router-link-exact-active {
     font-weight: 600;
 }
-.navbar {
-    width: 100%;
+.footer {
+    margin-bottom: 1rem;
 }
 </style>
