@@ -13,6 +13,10 @@ export default {
     components: {
         Navbar,
     },
+    mounted() {
+        // When application is mounted, check for a key and do login handshake if it's saved locally.
+        this.$store.dispatch("checkLoginToken");
+    },
 };
 </script>
 

@@ -55,26 +55,7 @@ export default {
                 .get(this.$store.state.endpoints.authenticate, payload)
                 .then((response) => {
                     this.$store.commit("updateToken", response.data.api_key);
-                    // Move the following to centralized api.js or the like, for a single axios interface
-                    const base = {
-                        baseURL: this.$store.state.endpoints.baseUrl,
-                        headers: {
-                            "x-api-key": `${this.$store.state.token}`,
-                            "Content-Type": "application/json",
-                        },
-                        xhrFields: {
-                            withCredentials: true,
-                        },
-                    };
-                    const axiosInstance = axios.create(base);
-                    axiosInstance({
-                        url: `${this.$store.state.endpoints.currentUser}`,
-                        method: "get",
-                        params: {},
-                    }).then((response) => {
-                        this.$store.commit("setUser", { user: response.data, isAuthenticated: true });
-                        this.$router.push({ name: "Home" });
-                    });
+                    this.$store.dispatch("fetchUserDetails").then(this.$router.push({ name: "Home" }));
                 })
                 .catch((error) => {
                     console.log(error);

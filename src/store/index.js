@@ -37,6 +37,32 @@ export default new Vuex.Store({
             Vue.set(state, "isAuthenticated", false);
         },
     },
-    actions: {},
+    actions: {
+        checkLoginToken({ dispatch, state }) {
+            if (state.token) {
+                dispatch("fetchUserDetails");
+            }
+        },
+        fetchUserDetails({ commit, state }) {
+            const base = {
+                baseURL: state.endpoints.baseUrl,
+                headers: {
+                    "x-api-key": `${state.token}`,
+                    "Content-Type": "application/json",
+                },
+                xhrFields: {
+                    withCredentials: true,
+                },
+            };
+            const axiosInstance = axios.create(base);
+            axiosInstance({
+                url: `${state.endpoints.currentUser}`,
+                method: "get",
+                params: {},
+            }).then((response) => {
+                commit("setUser", { user: response.data, isAuthenticated: true });
+            });
+        },
+    },
     modules: {},
 });
