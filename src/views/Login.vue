@@ -40,7 +40,7 @@ export default {
     data() {
         return {
             username: "",
-            password: ""
+            password: "",
         };
     },
     methods: {
@@ -48,41 +48,41 @@ export default {
             const payload = {
                 auth: {
                     username: this.username,
-                    password: this.password
-                }
+                    password: this.password,
+                },
             };
             axios
                 .get(this.$store.state.endpoints.authenticate, payload)
-                .then(response => {
+                .then((response) => {
                     this.$store.commit("updateToken", response.data.api_key);
                     // Move the following to centralized api.js or the like, for a single axios interface
                     const base = {
                         baseURL: this.$store.state.endpoints.baseUrl,
                         headers: {
                             "x-api-key": `${this.$store.state.token}`,
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
                         },
                         xhrFields: {
-                            withCredentials: true
-                        }
+                            withCredentials: true,
+                        },
                     };
                     const axiosInstance = axios.create(base);
                     axiosInstance({
                         url: `${this.$store.state.endpoints.currentUser}`,
                         method: "get",
-                        params: {}
-                    }).then(response => {
+                        params: {},
+                    }).then((response) => {
                         this.$store.commit("setUser", { user: response.data, isAuthenticated: true });
                         this.$router.push({ name: "Home" });
                     });
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.log(error);
                     console.debug(error);
                     console.dir(error);
                 });
-        }
-    }
+        },
+    },
 };
 </script>
 

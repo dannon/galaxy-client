@@ -17,8 +17,8 @@ export default new Vuex.Store({
         endpoints: {
             authenticate: `${baseUrl}authenticate/baseauth`,
             currentUser: `${baseUrl}users/current`,
-            base: `${baseUrl}`
-        }
+            base: `${baseUrl}`,
+        },
     },
 
     mutations: {
@@ -35,8 +35,8 @@ export default new Vuex.Store({
             localStorage.removeItem("token");
             Vue.set(state, "user", {});
             Vue.set(state, "isAuthenticated", false);
-        }
+        },
     },
     actions: {},
-    modules: {}
+    modules: {},
 });

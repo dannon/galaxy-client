@@ -37,8 +37,8 @@ export default {
     computed: {
         userEmail() {
             return this.$store.state.user?.email || null;
-        }
-    }
+        },
+    },
 };
 </script>
 
