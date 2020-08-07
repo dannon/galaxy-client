@@ -1,24 +1,68 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <header>
+            <nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar" id="navMenu">
+                        <b-navbar toggleable="lg" type="dark" variant="primary">
+                            <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+                            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+                            <b-collapse id="nav-collapse" is-nav>
+                                <b-navbar-nav class="ml-auto">
+                                    <b-nav-item to="/">Home</b-nav-item>
+                                    <b-nav-item-dropdown v-if="this.$store.state.isAuthenticated" right>
+                                        <template v-slot:button-content>
+                                            <em>{{ this.$store.state.user }}</em>
+                                        </template>
+                                        <b-dropdown-item href="#">Profile</b-dropdown-item>
+                                        <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
+                                    </b-nav-item-dropdown>
+                                    <b-nav-item v-else to="/login">Log In</b-nav-item>
+                                </b-navbar-nav>
+                            </b-collapse>
+                        </b-navbar>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="content-body container">
+            <router-view />
+        </div>
+        <div class="hero-footer has-text-centered">Galaxy Project</div>
     </div>
-    <router-view/>
-  </div>
 </template>
+<script>
+export default {
+    methods: {
+        logout() {
+            this.$store.commit("logout");
+            this.router.push("/");
+        }
+    }
+};
+</script>
 
-<style>
+<style lang="scss">
 #app {
-  text-align: center;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
+.content-body {
+    height: 80vh;
+    min-height: 400px;
 }
-
-#nav a.router-link-exact-active {
-  /* Use vars, or shift to global config */
-  color: #42b983;
+.footer {
+    margin-bottom: 1rem;
+}
+.router-link-exact-active {
+    font-weight: 600;
+}
+.navbar {
+    width: 100%;
 }
 </style>
