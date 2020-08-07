@@ -31,6 +31,6 @@ export default {
 </script>
 <style scoped>
 .navbar {
-    /*height: 80px;*/
+    height: 4rem;
 }
 </style>
