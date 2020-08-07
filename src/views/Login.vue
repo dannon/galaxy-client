@@ -1,18 +1,35 @@
 <template>
     <div class="container is-block">
-        <h1 class="title">Sign In</h1>
-        <h2 class="subtitle">to access Galaxy</h2>
-        <b-form @submit.prevent="authenticate">
-            <b-form-group>
-                <b-form-input v-model="username" tabindex="1" type="email" placeholder="Email" autofocus></b-form-input>
-            </b-form-group>
+        <b-card no-body class="login-box w-50 mx-auto" header="Welcome to Galaxy, please log in">
+            <b-card-body>
+                <div>
+                    <b-form @submit.prevent="authenticate">
+                        <b-form-group>
+                            <b-form-input
+                                v-model="username"
+                                tabindex="1"
+                                type="email"
+                                placeholder="Email"
+                                autofocus
+                            ></b-form-input>
+                        </b-form-group>
 
-            <b-form-group>
-                <b-form-input v-model="password" tabindex="2" placeholder="Password" type="password" autocomplete="off">
-                </b-form-input>
-            </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
-        </b-form>
+                        <b-form-group>
+                            <b-form-input
+                                v-model="password"
+                                tabindex="2"
+                                placeholder="Password"
+                                type="password"
+                                autocomplete="off"
+                            >
+                            </b-form-input>
+                        </b-form-group>
+                        <b-button type="submit" variant="primary">Submit</b-button>
+                    </b-form>
+                </div>
+            </b-card-body>
+            <b-card-footer>Having trouble? Contact an admin!</b-card-footer>
+        </b-card>
     </div>
 </template>
 <script>
@@ -69,4 +86,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-box {
+    min-width: 400px;
+}
+</style>

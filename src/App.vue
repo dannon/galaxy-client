@@ -29,7 +29,7 @@
         <div class="content-body container">
             <router-view />
         </div>
-        <div class="hero-footer has-text-centered">Galaxy Project</div>
+        <div class="fixed-bottom my-2 has-text-centered">Galaxy Project</div>
     </div>
 </template>
 <script>
