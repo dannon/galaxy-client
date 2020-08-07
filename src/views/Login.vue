@@ -55,7 +55,7 @@ export default {
                         method: "get",
                         params: {}
                     }).then(response => {
-                        this.$store.commit("setAuthUser", { authUser: response.data, isAuthenticated: true });
+                        this.$store.commit("setUser", { user: response.data, isAuthenticated: true });
                         this.$router.push({ name: "Home" });
                     });
                 })

@@ -11,7 +11,7 @@ const baseUrl = "http://192.168.0.101:8080/api/";
 
 export default new Vuex.Store({
     state: {
-        authUser: {},
+        user: {},
         isAuthenticated: false,
         token: localStorage.getItem("token"),
         endpoints: {
@@ -22,18 +22,18 @@ export default new Vuex.Store({
     },
 
     mutations: {
-        setAuthUser(state, { authUser, isAuthenticated }) {
-            Vue.set(state, "authUser", authUser);
+        setUser(state, { user, isAuthenticated }) {
+            Vue.set(state, "user", user);
             Vue.set(state, "isAuthenticated", isAuthenticated);
         },
         updateToken(state, newToken) {
             localStorage.setItem("token", newToken);
-            state.jwt = newToken;
+            state.token = newToken;
         },
         logout(state) {
-            state.jwt = null;
+            state.token = null;
             localStorage.removeItem("token");
-            Vue.set(state, "authUser", {});
+            Vue.set(state, "user", {});
             Vue.set(state, "isAuthenticated", false);
         }
     },
