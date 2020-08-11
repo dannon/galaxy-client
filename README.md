@@ -1,4 +1,7 @@
-# galaxy-client
+# galaxy-dashboard
+
+This project is an exercise in building a completely backend-independent PWA
+that interfaces with Galaxy.
 
 ## Project setup
 ```
@@ -19,6 +22,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
