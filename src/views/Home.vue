@@ -1,10 +1,10 @@
 <template>
     <b-jumbotron>
         <template v-slot:header>
-            Galaxy Client
+            Galaxy Dashboard
         </template>
         <template v-slot:lead>
-            This is a backend independent client application.
+            This is a fully backend independent web application, served separately from the core Galaxy.
         </template>
         <p>
             See

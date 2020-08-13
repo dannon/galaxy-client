@@ -1,5 +1,7 @@
 <template>
-    This is your dashboard.
+    <div>
+        This is your dashboard.
+    </div>
 </template>
 <script>
 export default {};

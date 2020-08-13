@@ -9,6 +9,7 @@
                                 v-model="username"
                                 tabindex="1"
                                 type="email"
+                                name="username"
                                 placeholder="Email"
                                 autofocus
                             ></b-form-input>
@@ -16,6 +17,7 @@
 
                         <b-form-group>
                             <b-form-input
+                                name="password"
                                 v-model="password"
                                 tabindex="2"
                                 placeholder="Password"
